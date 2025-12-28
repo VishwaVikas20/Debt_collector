@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedEx SmartCollect | AI Debt Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .hero-section { background: linear-gradient(90deg, #4D148C 0%, #FF6600 100%); color: white; padding: 40px 0; margin-bottom: 30px; }
+        .card { border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 10px; }
+        .btn-fedex { background-color: #4D148C; color: white; }
+        .btn-fedex:hover { background-color: #3b0f6b; color: white; }
+        .result-box { background-color: #e8f5e9; border-left: 5px solid #28a745; padding: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section text-center">
+        <h1>FedEx SmartCollect</h1>
+        <p class="lead">AI-Driven Debt Recovery & Agency Allocation System</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 p-4">
+                    <h4 class="text-primary mb-3">👤 Single Case Lookup</h4>
+                    <p class="text-muted small">Enter customer details to get real-time AI assignment.</p>
+                    
+                    <form action="/predict_one_person" method="POST">
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Amount Due (₹)</label>
+                                <input type="number" name="amount" class="form-control" required placeholder="5000">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Credit Score</label>
+                                <input type="number" name="credit" class="form-control" required placeholder="300-850">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Days Overdue</label>
+                            <input type="number" name="days" class="form-control" required placeholder="e.g. 45">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Past Defaults</label>
+                                <input type="number" name="defaults" class="form-control" value="0">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Calls Made</label>
+                                <input type="number" name="calls" class="form-control" value="0">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-fedex w-100">Predict Priority & Agency</button>
+                    </form>
+
+                    {% if single_result %}
+                    <div class="result-box">
+                        <h5>✅ AI Analysis Complete</h5>
+                        <p class="mb-1"><strong>Recovery Probability:</strong> {{ single_result }}</p>
+                        <p class="mb-0"><strong>Recommended Strategy:</strong><br> {{ recommendation }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 p-4">
+                    <h4 class="text-success mb-3">📂 Bulk Batch Processing</h4>
+                    <p class="text-muted small">Upload a CSV file containing thousands of debtors. The system will auto-assign agencies and download the report.</p>
+                    
+                    <div class="alert alert-secondary text-center">
+                        <strong>⬇️ Input Format Required</strong><br>
+                        <small>Amount_Due, Days_Overdue, Credit_Score, Past_Defaults, Calls_Made</small>
+                    </div>
+
+                    <form action="/predict_batch" method="POST" enctype="multipart/form-data" class="mt-4">
+                        <div class="mb-3">
+                            <input type="file" name="file" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 py-2">Process & Download Report</button>
+                    </form>
+                </div>
+            </div>
+
+        </div> <div class="text-center mt-4 text-muted">
+            <small>FedEx SmartCollect Prototype | Built for Shaastra 2026</small>
+        </div>
+    </div>
+
+</body>
+</html>
