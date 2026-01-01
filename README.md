@@ -37,6 +37,9 @@ SmartCollect analyzes financial history (Credit Score, Past Defaults, Payment Hi
 <img width="2940" height="1912" alt="image" src="https://github.com/user-attachments/assets/021848ae-0ded-4074-aada-9084864d7eac" />
 
 
+## 📸 Video Demo
+Link to video : https://drive.google.com/file/d/1pjGy0dgOQL9RBYy3xTtBQpo2trtw3yFK/view?usp=drive_link
+
 ## ⚙️ Installation & Usage
 1.  **Clone the repository**
     ```bash
