@@ -40,6 +40,12 @@ SmartCollect analyzes financial history (Credit Score, Past Defaults, Payment Hi
 ## 📸 Video Demo
 Link to video : https://drive.google.com/file/d/1pjGy0dgOQL9RBYy3xTtBQpo2trtw3yFK/view?usp=drive_link
 
+Time stamps :
+  0:0-0:10  -  Intro
+  0:11-0:40 -  SinglePrediction
+  0:41-1:05 -  BatchPrediction
+  1:06-1:27 -  CostImpact
+
 ## ⚙️ Installation & Usage
 1.  **Clone the repository**
     ```bash
